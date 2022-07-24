@@ -1,8 +1,11 @@
 import type { BaseTranslation } from '../i18n-types'
+import nav from './nav'
+import home from './home'
 
-const en: BaseTranslation = {
-	title: "Deutsche Model United Nations e.V. – Official website",
-	test: "this is a test"
+const de: BaseTranslation = {
+	nav,
+	home
+	title: 'Deutsche Model United Nations e.V.',
 }
 
-export default en
+export default de

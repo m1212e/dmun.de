@@ -21,6 +21,7 @@ const config = {
 				alias: {
 					$i18n: path.resolve('./src/i18n'),
 					$lib: path.resolve('./src/lib'),
+					$assets: path.resolve('./src/assets'),
 				},
 			},
 		},

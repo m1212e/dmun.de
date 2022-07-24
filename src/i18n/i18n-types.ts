@@ -14,25 +14,89 @@ export type Translation = RootTranslation
 export type Translations = RootTranslation
 
 type RootTranslation = {
+	nav: {
+		/**
+		 * Home
+		 */
+		home: string
+		/**
+		 * Association
+		 */
+		association: string
+		/**
+		 * Engagement
+		 */
+		engagement: string
+		/**
+		 * Funding
+		 */
+		funding: string
+		/**
+		 * News
+		 */
+		news: string
+		/**
+		 * Conferences
+		 */
+		conferences: string
+	}
+	home: {
+		/**
+		 * The association
+		 */
+		association: string
+		/**
+		 * Conferences
+		 */
+		conferences: string
+	}
 	/**
-	 * Deutsche Model United Nations e.V. – Official website
+	 * Deutsche Model United Nations e.V.
 	 */
 	title: string
-	/**
-	 * this is a test
-	 */
-	test: string
 }
 
 export type TranslationFunctions = {
+	nav: {
+		/**
+		 * Home
+		 */
+		home: () => LocalizedString
+		/**
+		 * Association
+		 */
+		association: () => LocalizedString
+		/**
+		 * Engagement
+		 */
+		engagement: () => LocalizedString
+		/**
+		 * Funding
+		 */
+		funding: () => LocalizedString
+		/**
+		 * News
+		 */
+		news: () => LocalizedString
+		/**
+		 * Conferences
+		 */
+		conferences: () => LocalizedString
+	}
+	home: {
+		/**
+		 * The association
+		 */
+		association: () => LocalizedString
+		/**
+		 * Conferences
+		 */
+		conferences: () => LocalizedString
+	}
 	/**
-	 * Deutsche Model United Nations e.V. – Official website
+	 * Deutsche Model United Nations e.V.
 	 */
 	title: () => LocalizedString
-	/**
-	 * this is a test
-	 */
-	test: () => LocalizedString
 }
 
 export type Formatters = {}

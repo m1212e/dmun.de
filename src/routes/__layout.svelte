@@ -11,12 +11,16 @@
 
 <script lang="ts">
 	import '../app.css'
+	import Navbar from './_navbar.svelte'
 </script>
 
 <svelte:head>
 	<title>{$LL.title()}</title>
 </svelte:head>
 
-<main class="w-screen h-screen">
-	<slot />
-</main>
+<div class="w-screen h-screen flex justify-center">
+	<div class="w-full md:w-4/5 max-w-5xl flex flex-col">
+		<Navbar />
+		<slot />
+	</div>
+</div>

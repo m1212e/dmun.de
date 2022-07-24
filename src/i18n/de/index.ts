@@ -1,8 +1,11 @@
-import type { Translation } from '../i18n-types'
+import type { BaseTranslation } from '../i18n-types'
+import nav from './nav'
+import home from './home'
 
-const de: Translation = {
-	title: "Deutsche Model United Nations e.V. – Offizielle Webseite",
-	test: "dies ist ein test"
+const de: BaseTranslation = {
+	nav,
+	home,
+	title: 'Deutsche Model United Nations e.V.',
 }
 
 export default de
