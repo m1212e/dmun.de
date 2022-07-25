@@ -1,6 +1,7 @@
 import { Directus } from '@directus/sdk'
 import { writable, type Writable } from 'svelte/store'
 import { locale } from '$i18n/i18n-svelte'
+import { baseLocale } from '$i18n/i18n-util'
 
 const directus = new Directus('https://directus-sandbox.dmun.de')
 
@@ -25,7 +26,7 @@ export async function getPageContent<T>(page: 'Home'): Promise<Writable<T>> {
 		stores[page].set(entry)
 	}
 
-	populate(lang)
+	populate(baseLocale)
 	locale.subscribe((lang) => {
 		populate(lang)
 	})
