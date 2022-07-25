@@ -12,6 +12,7 @@
 	},
 	"type": "module",
 	"devDependencies": {
+		"@directus/sdk": "^10.1.1",
 		"@sveltejs/adapter-static": "^1.0.0-next.34",
 		"@sveltejs/kit": "1.0.0-next.348",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",

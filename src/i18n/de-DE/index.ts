@@ -6,6 +6,7 @@ const de: BaseTranslation = {
 	nav,
 	home,
 	title: 'Deutsche Model United Nations e.V.',
+	imprint: 'Impressum & Datenschutz',
 }
 
 export default de

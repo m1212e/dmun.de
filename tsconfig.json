@@ -5,8 +5,10 @@
 			"$i18n/*": ["src/i18n/*"],
 			"$lib": ["src/lib"],
 			"$lib/*": ["src/lib/*"],
-			"$assets/*": ["src/lib/*"],
-			"$assets": ["src/lib"]
+			"$assets/*": ["src/assets/*"],
+			"$assets": ["src/assets"],
+			"$services/*": ["src/services/*"],
+			"$services": ["src/services"]
 		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]

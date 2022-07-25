@@ -4,8 +4,9 @@ import home from './home'
 
 const de: BaseTranslation = {
 	nav,
-	home
+	home,
 	title: 'Deutsche Model United Nations e.V.',
+	imprint: 'Imprint & Privacy',
 }
 
 export default de
