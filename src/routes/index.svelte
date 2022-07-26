@@ -19,8 +19,9 @@
 </script>
 
 <main class="gap-32 flex flex-col">
+	<!-- first row -->
 	<span class="flex justify-between">
-		<div class="flex flex-col justify-center w-5/12 mr-10">
+		<div class="flex flex-col justify-center lg:w-5/12 lg:mr-10">
 			<h1>{$home.association_name}</h1>
 			{$home.subheading}
 			<span class="mt-8 flex">
@@ -32,15 +33,15 @@
 				</a>
 			</span>
 		</div>
-		<div class="relative">
+		<div class="hidden lg:block relative">
 			<img class="landtag" src={landtag} alt="the state parliament of schleswig-holstein" />
 			<div class="landtagdecorationwrapper">
 				<img class="landtagdecoration" src={logo} alt="dmun logo" />
 			</div>
 		</div>
 	</span>
-	<span class="flex items-center">
-		<img class="members" src={members} alt="members of dmun" />
+	<span class="flex items-center flex-col sm:flex-row">
+		<img class="members mb-8 sm:mb-0" src={members} alt="members of dmun" />
 		<div class="ml-10">
 			<h2>{$home.who_we_are_heading}</h2>
 			<p>{$home.who_we_are_text}</p>

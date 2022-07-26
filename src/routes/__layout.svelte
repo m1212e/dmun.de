@@ -30,29 +30,27 @@
 	<title>{$LL.title()}</title>
 </svelte:head>
 
-<div class="flex justify-center">
-	<div class="w-full min-h-screen md:w-4/5 max-w-5xl flex flex-col justify-between">
-		<div>
-			<Navbar />
-			<span class="line-breaks">
-				<slot />
-			</span>
+<div class="w-full min-h-screen md:w-4/5 max-w-5xl flex flex-col justify-between">
+	<div class="w-full flex flex-col items-center">
+		<Navbar />
+		<div class="line-breaks w-full flex items-center">
+			<slot />
 		</div>
-		<span class="flex w-full justify-end mt-32">
-			<a class="mr-5" href="/imprint">{$LL.imprint()}</a>
-			{#each locales as current, index}
-				<button
-					alt="select {current} as language"
-					on:click={() => setLocale(current)}
-					class="mx-2 {$locale == current ? 'font-bold' : ''}"
-				>
-					{current.split('-')[0].toUpperCase()}
-				</button>
-				{#if index < locales.length - 1}
-					|
-				{/if}
-			{/each}
-		</span>
+	</div>
+	<div class="flex w-full justify-end mt-32">
+		<a class="mr-5" href="/imprint">{$LL.imprint()}</a>
+		{#each locales as current, index}
+			<button
+				alt="select {current} as language"
+				on:click={() => setLocale(current)}
+				class="mx-2 {$locale == current ? 'font-bold' : ''}"
+			>
+				{current.split('-')[0].toUpperCase()}
+			</button>
+			{#if index < locales.length - 1}
+				|
+			{/if}
+		{/each}
 	</div>
 </div>
 

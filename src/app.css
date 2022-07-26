@@ -43,9 +43,23 @@
 	font-display: swap;
 }
 
+html {
+    display: flex;
+    justify-content: center;
+}
+
 body {
 	color: #515151;
 	font-family: 'Baloo 2';
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+}
+
+body > div {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
 /* icons inside of buttons */
@@ -58,9 +72,9 @@ button:focus {
 }
 
 h1 {
-	@apply font-bold text-5xl mb-2
+	@apply font-bold text-3xl md:text-5xl mb-2
 }
 
 h2 {
-	@apply font-bold text-3xl mb-3
+	@apply font-bold text-xl md:text-3xl mb-3
 }
