@@ -1,45 +1,38 @@
-# typesafe-i18n demo sveltekit
+# create-svelte
 
-**Here is a [video](https://www.youtube.com/watch?v=C6O5pMMMTG0) for better context**
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-This example demonstrates a [`typesafe-i18n`](https://github.com/ivanhofer/typesafe-i18n)-integration with [SvelteKit](https://kit.svelte.dev/).
+## Creating a project
 
-### LIVE-DEMO: https://typesafe-i18n-demo-sveltekit.vercel.app
+If you're seeing this, you've probably already done this step. Congrats!
 
-It is a basic example and shows:
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
--  basic i18n setup of three different locales
--  auto-detecting user language preferences
--  full SSR support
--  SEO optimizations
--  locale switching
--  lazy loading of locales
--  persistent locale state via language routes
--  typesafety features of `typesafe-i18n`
--  plural rules
--  locale specific date-formatting
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-What is missing:
+## Developing
 
--  opinion how to localize slugs\
-   this highly depends where your data comes from. This will probably differ from project to project.
--  cross-links between your language slugs\
-   like mentioned above, this will differ from project to project. You can find useful resources here:\
-   -  [`rel="alternate"` links](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#attr-alternate)
-   -  [`hreflang` attribute](https://developer.mozilla.org/de/docs/Web/HTML/Element/a#attr-hreflang)
-   -  [SEO optimized examples](https://developers.google.com/search/docs/advanced/crawling/localized-versions)
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-## add `typesafe-i18n` to an existing SvelteKit project
+```bash
+npm run dev
 
-If you want to implement the solution in a existing project, you can take a look at the [commit history](https://github.com/ivanhofer/typesafe-i18n-demo-sveltekit/commits/main) to see a step-by-step guide.
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-## JavaScript version
+## Building
 
-You can find the exact same example in a JavaScript only version [here](https://github.com/ivanhofer/typesafe-i18n-demo-sveltekit-jsdoc).\
-It offers the same typesafety features but instead of TypeScript files it is written in JavaScript with JsDoc comments.
+To create a production version of your app:
 
-## learn more
+```bash
+npm run build
+```
 
-If you want to know more about `typesafe-i18n` head over to the main repo:
+You can preview the production build with `npm run preview`.
 
-### https://github.com/ivanhofer/typesafe-i18n
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
