@@ -1,12 +1,12 @@
-import { getAvailableLanguageCodes, getDonationPopupData, getLayoutData } from '../services/directus';
+import { footer, getAvailableLanguageCodes, nav } from '../services/directus';
 
 export const prerender = true;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	return {
-		content: await getLayoutData(),
-		availableLanguageCodes: await getAvailableLanguageCodes(),
-		donationPopup: await getDonationPopupData()
+		nav: await nav(),
+		footer: await footer(),
+		availableLanguageCodes: await getAvailableLanguageCodes()
 	};
 }

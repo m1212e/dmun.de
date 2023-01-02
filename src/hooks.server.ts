@@ -1,5 +1,5 @@
 import type { RequestEvent } from '.svelte-kit/types/src/routes/$types';
-import { setLanguage } from './services/lang';
+import { setLanguage } from './services/language';
 
 export async function handle({ event, resolve }: { event: RequestEvent; resolve: any }) {
 	if (event.cookies.get('lang')) {
