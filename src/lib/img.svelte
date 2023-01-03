@@ -4,10 +4,11 @@
 	 * The id of the image to display
 	 */
 	export let image: string | Image;
+	export let alt: string;
 
 	let id = typeof image == 'string' ? image : image.id;
 
 	let classes = $$props.class ?? 'w-96 h-64 rounded-3xl object-cover';
 </script>
 
-<img class={classes} src={'/assets/' + id} alt={$$props.alt} />
+<img class={classes} src={'/assets/' + id} {alt} />

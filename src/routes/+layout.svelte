@@ -34,7 +34,7 @@
 <div class="w-full h-full flex justify-center">
 	<div class="max-w-6xl flex flex-col flex-grow">
 		<Nav data={data.nav} />
-		<div class="pt-20 sm:pt-28">
+		<div class="content">
 			<slot />
 		</div>
 
@@ -43,4 +43,8 @@
 </div>
 
 <style>
+	.content {
+		min-height: 93vh;
+		@apply sm:pt-20 sm:pt-28 px-3
+	}
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Footer } from 'src/interfaces/directus';
 	import { availableLanguageCodes, getTranslation, setLanguage } from 'src/services/language';
-    import TranslateIcon from '../icons/translate.svg';
+    import TranslateIcon from '../icons/grey-translate.svg';
 
 	export let data: Footer;
 	const translated = getTranslation(data.translations);
@@ -29,6 +29,6 @@
 
 <style>
     footer {
-        @apply bottom-0 left-0 absolute px-5 py-5 w-full;
+        @apply px-5 py-5 w-full;
     }
 </style>
