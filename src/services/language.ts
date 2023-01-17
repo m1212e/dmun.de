@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import type { Translation } from 'src/interfaces/directus';
-import { derived, readable } from 'svelte/store';
+import { derived, readable, type Readable } from 'svelte/store';
 
 /**
  * The initial language
@@ -49,13 +49,17 @@ export function setAvailableLanguageCodes(value: string[]) {
  * @param element The translations array from directus
  * @returns A JS object with the translations
  */
-export function getTranslation<T>(element: T[] & Translation[]) {
-	return derived(selectedLanguage, ($selectedLanguage) => {
-		const found = element.find(
-			(el: any) =>
-				el.languages_code == $selectedLanguage || el.languages_code.code == $selectedLanguage
-		);
+export function getTranslation<T>(
+	element: (Translation[] & T[]) | { translations: Translation[] & T[] }
+): Readable<T> {
+	if ('translations' in element) {
+		return derived(selectedLanguage, ($selectedLanguage) => {
+			return (element.translations.find((el) => el.languages_code.code == $selectedLanguage) ??
+				element.translations[0]) as T;
+		});
+	}
 
-		return found ?? element[0];
+	return derived(selectedLanguage, ($selectedLanguage) => {
+		return (element.find((el) => el.languages_code.code == $selectedLanguage) ?? element[0]) as T;
 	});
 }

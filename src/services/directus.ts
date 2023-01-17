@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Directus } from '@directus/sdk';
-import type { DirectusType, Navbar } from 'src/interfaces/directus';
+import type { DirectusType, Home, Imprint, Navbar } from 'src/interfaces/directus';
 import { env } from '$env/dynamic/private';
 
 if (env.DIRECTUS_URL === undefined) {
@@ -53,4 +53,22 @@ export async function footer() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Navbar;
+}
+
+export async function imprint() {
+	await initPromise;
+	return (
+		await directus.items('imprint').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as Imprint;
+}
+
+export async function home() {
+	await initPromise;
+	return (
+		await directus.items('home').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as Home;
 }

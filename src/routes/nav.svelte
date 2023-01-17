@@ -28,7 +28,9 @@
 	<div class="blue-bg" class:expanded />
 	<!-- mobile nav menu end  -->
 
-	<img class="logo" src={'/assets/' + data.logo.id} class:expanded alt="dmun logo" />
+	<a href="/">
+		<img class="logo" src={'/assets/' + data.logo.id} alt="dmun logo" />
+	</a>
 	<div class="links" class:expanded>
 		<a href="/" on:click={close}>{$translated.home}</a>
 		<a href="/association" on:click={close}>{$translated.association}</a>
@@ -73,7 +75,7 @@
 		top: 110vh;
 		@apply rounded-full bg-blue-dmun absolute p-3 duration-300;
 	}
-	
+
 	.close-button.expanded {
 		top: 90vh;
 	}
@@ -82,10 +84,6 @@
 		z-index: 3;
 		transform: scale(0);
 		@apply h-12 absolute top-5 bg-white rounded-lg duration-300 transition-all;
-	}
-
-	.logo.expanded {
-		transform: scale(1);
 	}
 
 	@media (min-width: 640px) {

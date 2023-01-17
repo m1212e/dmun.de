@@ -7,8 +7,6 @@
 	export let alt: string;
 
 	let id = typeof image == 'string' ? image : image.id;
-
-	let classes = $$props.class ?? 'w-96 h-64 rounded-3xl object-cover';
 </script>
 
-<img class={classes} src={'/assets/' + id} {alt} />
+<img class={$$props.class} src={'/assets/' + id} {alt} />
