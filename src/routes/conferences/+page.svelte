@@ -132,7 +132,7 @@
 			<img
 				src={InfoIcon}
 				alt="info icon"
-				class="mr-2"
+				class="mr-2 cursor-pointer"
 				on:click={() => (infoExpanded = !infoExpanded)}
 				on:keypress={() => (infoExpanded = !infoExpanded)}
 			/>
