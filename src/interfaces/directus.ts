@@ -28,11 +28,13 @@ export type Home = {
 			section3_heading: string;
 			section3_text: string;
 			section3_button: string;
+			sponsors: string;
 		}[];
 	main_image: Image;
 	section1_image: Image;
 	section2_image: Image;
 	section3_image: Image;
+	sponsors: { sponsors_id: { image: Image; website: string } }[];
 };
 
 export type Conference = {

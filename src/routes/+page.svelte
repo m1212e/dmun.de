@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Img from '$lib/img.svelte';
-	import type { Home } from 'src/interfaces/directus';
+	import type { Home, Sponsor } from 'src/interfaces/directus';
 	import { getTranslation } from 'src/services/language';
 	import ArrowRight from 'src/icons/white-arrow-right.svg';
 
 	export let data: any;
 	let content: Home = data.content;
+	let sponsors: Sponsor[] = data.sponsors;
 	const translated = getTranslation(content);
 </script>
 
@@ -75,11 +76,23 @@ TODO: News einbauen
 			{@html $translated.section3_text}
 		</p>
 		<div class="flex mt-5">
-			<a
-				href="/association"
-				class="border border-gray-500 px-3 py-2 rounded-2xl font-bold flex"
+			<a href="/association" class="border border-gray-500 px-3 py-2 rounded-2xl font-bold flex"
 				>{$translated.section3_button}</a
 			>
 		</div>
+	</div>
+</div>
+
+<div>
+	<h2 class="mt-14 mb-4">{$translated.sponsors}</h2>
+	<div class="grid gap-x-8 gap-y-3 sm:grid-cols-3 grid-cols-1 w-full">
+		{#each content.sponsors as sponsor}
+			<a
+				class="h-28 flex justify-center hover:shadow duration-300 rounded-lg"
+				href={sponsor.sponsors_id.website}
+			>
+				<Img image={sponsor.sponsors_id.image} alt="sponsor image" />
+			</a>
+		{/each}
 	</div>
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Img from '$lib/img.svelte';
 	import InfoIcon from 'src/icons/info.svg';
+	import ExternalIcon from 'src/icons/white-external-link.svg';
 	import X from 'src/icons/dark-x.svg';
 	import type { Conference } from 'src/interfaces/directus';
 	import { getTranslation } from 'src/services/language';
@@ -167,12 +168,18 @@
 		<p class="mb-5 overflow-y-auto pr-3" style="height: 33rem">
 			{@html $displayedConferenceTextStore.text}
 		</p>
-		<a
-			href={displayedConference.website}
-			class="bg-blue-dmun text-white px-3 py-2 rounded-2xl font-bold">Zur Konferenz</a
+		<div class="flex">
+			<a
+				href={displayedConference.website}
+				class="bg-blue-dmun text-white px-3 py-2 rounded-2xl font-bold flex"
+				>{displayedConference.name}<img class="ml-2" src={ExternalIcon} alt="go to webpage icon" /></a
+			>
+		</div>
+		<button
+			class="absolute right-5 top-5 scale-110 md:hidden"
+			on:click={() => (showConferenceInfoMobile = false)}
 		>
-		<button class="absolute right-5 top-5 scale-110" on:click={() => showConferenceInfoMobile = false}>
-			<img src={X} alt="x to close the menu">
+			<img src={X} alt="x to close the menu" />
 		</button>
 	</div>
 </div>
