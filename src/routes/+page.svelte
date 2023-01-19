@@ -58,6 +58,11 @@ TODO: News einbauen
 		<p>
 			{@html $translated.section2_text}
 		</p>
+		<div class="flex mt-5">
+			<a href="/conferences" class="bg-blue-dmun text-white px-3 py-2 rounded-2xl font-bold flex"
+				>{$translated.section2_button}<img class="ml-2" src={ArrowRight} alt="arrow right" /></a
+			>
+		</div>
 	</div>
 	<div class="my-8 sm:pl-8">
 		<Img
@@ -69,5 +74,12 @@ TODO: News einbauen
 		<p>
 			{@html $translated.section3_text}
 		</p>
+		<div class="flex mt-5">
+			<a
+				href="/association"
+				class="border border-gray-500 px-3 py-2 rounded-2xl font-bold flex"
+				>{$translated.section3_button}</a
+			>
+		</div>
 	</div>
 </div>

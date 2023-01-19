@@ -1,7 +1,12 @@
 <script lang="ts">
 	import type { Footer } from 'src/interfaces/directus';
-	import { availableLanguageCodes, getTranslation, setLanguage } from 'src/services/language';
-    import TranslateIcon from '../icons/grey-translate.svg';
+	import {
+		availableLanguageCodes,
+		getTranslation,
+		selectedLanguage,
+		setLanguage
+	} from 'src/services/language';
+	import TranslateIcon from '../icons/grey-translate.svg';
 
 	export let data: Footer;
 	const translated = getTranslation(data.translations);
@@ -12,14 +17,10 @@
 		<a href="/imprint">{$translated.imprint}</a>
 	</span>
 	<span class="ml-10 flex items-center">
-        <img
-				class="mr-1 h-5"
-				src={TranslateIcon}
-				alt="language picker indicator"
-			/>
+		<img class="mr-1 h-5" src={TranslateIcon} alt="language picker indicator" />
 		{#each availableLanguageCodes as lang}
 			<div class="mx-2 font-bold">
-				<button on:click={() => setLanguage(lang)}>
+				<button on:click={() => setLanguage(lang)} class={$selectedLanguage == lang ? 'underline' : ''}>
 					{lang.split('-')[0].toUpperCase()}
 				</button>
 			</div>
@@ -28,7 +29,7 @@
 </footer>
 
 <style>
-    footer {
-        @apply px-5 py-5 w-full;
-    }
+	footer {
+		@apply px-5 py-5 w-full;
+	}
 </style>

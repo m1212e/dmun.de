@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Directus } from '@directus/sdk';
-import type { DirectusType, Home, Imprint, Navbar } from 'src/interfaces/directus';
+import type { Conference, DirectusType, Home, Imprint, Navbar } from 'src/interfaces/directus';
 import { env } from '$env/dynamic/private';
 
 if (env.DIRECTUS_URL === undefined) {
@@ -71,4 +71,13 @@ export async function home() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Home;
+}
+
+export async function conferences() {
+	await initPromise;
+	return (
+		await directus.items('conferences').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as Conference[];
 }

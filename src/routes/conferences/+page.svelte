@@ -1,7 +1,23 @@
 <script lang="ts">
+	import Img from '$lib/img.svelte';
 	import InfoIcon from 'src/icons/info.svg';
+	import X from 'src/icons/dark-x.svg';
+	import type { Conference } from 'src/interfaces/directus';
+	import { getTranslation } from 'src/services/language';
 	import { fly } from 'svelte/transition';
 	let infoExpanded = false;
+
+	export let data: any;
+	let content: Conference[] = data.content;
+	let conferences = content.map((c) => {
+		return {
+			name: c.name,
+			logo: c.logo,
+			state: c.state,
+			website: c.website,
+			translation: getTranslation(c.translations)
+		};
+	});
 
 	// svg paths for the 16 states of germany
 	const states = [
@@ -71,25 +87,10 @@
 		}
 	];
 
-	//TODO: make configurable
-	let lastClickedStateID = 'DE-SH';
-	const conferences: { name: string; state: string; text: string; link: string }[] = [
-		{
-			name: 'MUN-SH',
-			state: 'DE-SH',
-			text: 'Lorem Ipsum Dolor Sit amet',
-			link: 'https://mun-sh.de'
-		},
-		{
-			name: 'MUN-BW',
-			state: 'DE-BW',
-			text: 'Lorem Ipsum Dolor Sit amet',
-			link: 'https://mun-bw.de'
-		}
-	];
-
+	let lastClickedStateID = conferences[0].state;
 	let currentlyHoveringState: string | undefined = undefined;
 	let displayedConference = conferences[0];
+	$: displayedConferenceTextStore = displayedConference.translation; // svelte doesnt allow to $ subscribe to a store inside an object
 	$: if (currentlyHoveringState) {
 		let found = conferences.find((conference) => conference.state == currentlyHoveringState);
 		if (found) {
@@ -98,17 +99,17 @@
 	} else {
 		displayedConference = conferences.find((conference) => conference.state == lastClickedStateID)!;
 	}
+
+	let showConferenceInfoMobile = false;
 </script>
 
-<div class="flex justify-center items-center">
-	<div class="mr-10">
-		<!-- Created for MapSVG plugin: http://mapsvg.com -->
+<div class="flex justify-center items-center relative">
+	<div class="md:mr-10 md:w-1/2 z-10 w-4/5">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="585.5141"
-			height="792.66785"
 			fill="white"
 			stroke="#303030"
+			viewBox="0 0 585.5141 792.66785"
 		>
 			{#each states as state}
 				<path
@@ -123,8 +124,14 @@
 						"
 					on:mouseenter={() => (currentlyHoveringState = state.id)}
 					on:mouseleave={() => (currentlyHoveringState = undefined)}
-					on:click={() => (lastClickedStateID = state.id)}
-					on:keypress={() => (lastClickedStateID = state.id)}
+					on:click={() => {
+						lastClickedStateID = state.id;
+						showConferenceInfoMobile = true;
+					}}
+					on:keypress={() => {
+						lastClickedStateID = state.id;
+						showConferenceInfoMobile = true;
+					}}
 				/>
 			{/each}
 		</svg>
@@ -133,8 +140,12 @@
 				src={InfoIcon}
 				alt="info icon"
 				class="mr-2 cursor-pointer"
-				on:click={() => (infoExpanded = !infoExpanded)}
-				on:keypress={() => (infoExpanded = !infoExpanded)}
+				on:click={() => {
+					infoExpanded = !infoExpanded;
+				}}
+				on:keypress={() => {
+					infoExpanded = !infoExpanded;
+				}}
 			/>
 			{#if infoExpanded}
 				<p transition:fly>
@@ -148,14 +159,41 @@
 			{/if}
 		</div>
 	</div>
-	<div class="shadow w-2/5 ml-10 p-10 rounded-3xl">
-		<h2 class="mb-2">{displayedConference.name}</h2>
-		<p class="mb-5">
-			{displayedConference.text}
+	<div class="conferenceInfoBox" class:showConferenceInfoMobile>
+		<div class="flex items-center mb-3">
+			<Img image={displayedConference.logo} alt="conference logo" class="h-8 mr-3" />
+			<h2 class="mb-2 pt-1">{displayedConference.name}</h2>
+		</div>
+		<p class="mb-5 overflow-y-auto pr-3" style="height: 33rem">
+			{@html $displayedConferenceTextStore.text}
 		</p>
 		<a
-			href={displayedConference.link}
+			href={displayedConference.website}
 			class="bg-blue-dmun text-white px-3 py-2 rounded-2xl font-bold">Zur Konferenz</a
 		>
+		<button class="absolute right-5 top-5 scale-110" on:click={() => showConferenceInfoMobile = false}>
+			<img src={X} alt="x to close the menu">
+		</button>
 	</div>
 </div>
+
+<style>
+	.conferenceInfoBox {
+		max-width: 90vw;
+		@apply transition-all duration-300 scale-0 absolute bg-white shadow md:w-1/2 md:ml-10 p-10 rounded-3xl z-20;
+	}
+
+	.conferenceInfoBox.showConferenceInfoMobile {
+		@apply scale-100;
+	}
+
+	@media (min-width: 768px) {
+		.conferenceInfoBox {
+			position: unset;
+			margin-left: unset;
+			margin-right: unset;
+			max-width: unset;
+			@apply scale-100;
+		}
+	}
+</style>

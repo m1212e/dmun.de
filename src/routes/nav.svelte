@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import type { Navbar } from 'src/interfaces/directus';
 	import { getTranslation } from 'src/services/language';
 	import ArrowRight from '../icons/white-arrow-right.svg';
@@ -16,7 +17,7 @@
 </script>
 
 <nav
-	class="flex justify-center sm:justify-between items-center fixed w-full max-w-6xl bg-white sm:px-10 sm:py-2"
+	class="flex justify-center sm:justify-between items-center fixed w-full max-w-6xl bg-white sm:px-10 sm:py-2 z-50"
 >
 	<!-- mobile nav menu, all absolute positioned  -->
 	<button class="expand-button" on:click={() => (expanded = true)} class:expanded>
@@ -32,9 +33,18 @@
 		<img class="logo" src={'/assets/' + data.logo.id} alt="dmun logo" />
 	</a>
 	<div class="links" class:expanded>
-		<a href="/" on:click={close}>{$translated.home}</a>
-		<a href="/association" on:click={close}>{$translated.association}</a>
-		<a href="/news" on:click={close}>{$translated.news}</a>
+		<a href="/" on:click={close} class={$page.route.id == '/' ? 'underline' : ''}
+			>{$translated.home}</a
+		>
+		<a
+			href="/association"
+			on:click={close}
+			class={$page.route.id?.startsWith('/association') ? 'underline' : ''}
+			>{$translated.association}</a
+		>
+		<a href="/news" on:click={close} class={$page.route.id?.startsWith('/news') ? 'underline' : ''}
+			>{$translated.news}</a
+		>
 		<a class="button" href="/conferences" on:click={close}
 			>{$translated.conferences}<img
 				class="ml-1"
