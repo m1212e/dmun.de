@@ -121,9 +121,9 @@
 </div>
 
 <div class="mt-20">
-	<Img image={content.junon_image} alt="junon logo" />
-	<h1 class="mb-4">{$translated.junon_title}</h1>
-	<p class="sm:columns-3" style="column-gap: 3rem;">
+	<Img class="sm:w-3/5" image={content.junon_image} alt="junon logo" />
+	<h1 class="my-4">{$translated.junon_title}</h1>
+	<p style="column-gap: 3rem;">
 		{@html $translated.junon_text}
 	</p>
 	<div class="flex mt-5">

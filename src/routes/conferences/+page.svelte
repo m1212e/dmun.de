@@ -1,16 +1,20 @@
 <script lang="ts">
 	import Img from '$lib/img.svelte';
 	import InfoIcon from 'src/icons/info.svg';
+	import AwardIcon from 'src/icons/award.svg';
 	import ExternalIcon from 'src/icons/white-external-link.svg';
 	import X from 'src/icons/dark-x.svg';
-	import type { Conference } from 'src/interfaces/directus';
+	import type { Conference, ModelUN } from 'src/interfaces/directus';
 	import { getTranslation } from 'src/services/language';
 	import { fly } from 'svelte/transition';
-	let infoExpanded = false;
 
 	export let data: any;
-	let content: Conference[] = data.content;
-	let conferences = content.map((c) => {
+	const content = data.content as ModelUN;
+	const transitions = getTranslation(content);
+
+	let infoExpanded = false;
+	let data_conferences: Conference[] = data.conferences;
+	let conferences = data_conferences.map((c) => {
 		return {
 			name: c.name,
 			logo: c.logo,
@@ -104,6 +108,10 @@
 	let showConferenceInfoMobile = false;
 </script>
 
+<p class="grid grid-cols-1 sm:grid-cols-3 mb-20" style="column-gap: 3rem;">
+	{@html $transitions.text}
+</p>
+
 <div class="flex justify-center items-center relative">
 	<div class="md:mr-10 md:w-1/2 z-10 w-4/5">
 		<svg
@@ -172,7 +180,11 @@
 			<a
 				href={displayedConference.website}
 				class="bg-blue-dmun text-white px-3 py-2 rounded-2xl font-bold flex"
-				>{displayedConference.name}<img class="ml-2" src={ExternalIcon} alt="go to webpage icon" /></a
+				>{displayedConference.name}<img
+					class="ml-2"
+					src={ExternalIcon}
+					alt="go to webpage icon"
+				/></a
 			>
 		</div>
 		<button
@@ -184,7 +196,19 @@
 	</div>
 </div>
 
+<div class="flex justify-center w-full mt-32 scale-150">
+	<img src={AwardIcon} alt="testemonials icon">
+</div>
+
+<p class="flex-col testemonials mt-10 sm:px-20">
+	{@html $transitions.testemonials}
+</p>
+
 <style>
+	.testemonials:global:nth-child(2n) {
+		@apply mb-14
+	}
+
 	.conferenceInfoBox {
 		max-width: 90vw;
 		@apply transition-all duration-300 scale-0 absolute bg-white shadow md:w-1/2 md:ml-10 p-10 rounded-3xl z-20;

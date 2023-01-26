@@ -8,6 +8,7 @@ import type {
 	DirectusType,
 	Home,
 	Imprint,
+	ModelUN,
 	Navbar,
 	YearlyTopic
 } from 'src/interfaces/directus';
@@ -89,6 +90,15 @@ export async function conferences() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Conference[];
+}
+
+export async function modelUn() {
+	await initPromise;
+	return (
+		await directus.items('model_un').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as ModelUN;
 }
 
 export async function association() {

@@ -33,9 +33,9 @@
 </script>
 
 <div class="w-full h-full flex justify-center">
-	<div class="max-w-6xl flex flex-col flex-grow">
+	<div class="w-screen max-w-6xl flex flex-col">
 		<Nav data={data.nav} />
-		<div class="content  py-20">
+		<div class="content py-20">
 			<slot />
 		</div>
 
@@ -44,9 +44,8 @@
 </div>
 
 <style>
-
 	.content {
 		min-height: 93vh;
-		@apply sm:pt-20 sm:pt-28 px-3;
+		@apply sm:pb-20 sm:pt-28 px-3;
 	}
 </style>

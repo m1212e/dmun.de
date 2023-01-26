@@ -83,6 +83,10 @@ export type Conference = {
 	website: string;
 };
 
+export type ModelUN = {
+	translations: Translation[] & { text: string, testemonials: string }[];
+};
+
 export type YearlyTopic = {
 	id: string;
 	translations: Translation[] & { title: string; text: string }[];

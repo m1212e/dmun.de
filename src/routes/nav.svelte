@@ -17,7 +17,7 @@
 </script>
 
 <nav
-	class="flex justify-center sm:justify-between items-center fixed w-full max-w-6xl bg-white sm:px-10 sm:py-2 z-50"
+	class="flex justify-center sm:justify-between items-center fixed w-screen max-w-6xl bg-white sm:px-10 sm:py-2 z-50"
 >
 	<!-- mobile nav menu, all absolute positioned  -->
 	<button class="expand-button" on:click={() => (expanded = true)} class:expanded>
