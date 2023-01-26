@@ -37,6 +37,15 @@ export type Home = {
 	sponsors: { sponsors_id: { image: Image; website: string } }[];
 };
 
+export type Association = {
+	translations: Translation[] &
+		{
+		title: string;
+		text: string;
+		}[];
+	leaf_image: Image;
+};
+
 export type Conference = {
 	translations: Translation[] & { text: string }[];
 	name: string;

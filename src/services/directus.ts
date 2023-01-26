@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Directus } from '@directus/sdk';
 import type {
+	Association,
 	Conference,
 	DirectusType,
 	Home,
@@ -88,4 +89,13 @@ export async function conferences() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Conference[];
+}
+
+export async function association() {
+	await initPromise;
+	return (
+		await directus.items('association').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as Association;
 }
