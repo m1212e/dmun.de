@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
 	import '../app.postcss';
 	import '../fonts.css';
+	import '../global.css';
 	import Nav from './nav.svelte';
 	import {
 		availableLanguageCodes,
@@ -43,6 +44,7 @@
 </div>
 
 <style>
+
 	.content {
 		min-height: 93vh;
 		@apply sm:pt-20 sm:pt-28 px-3;

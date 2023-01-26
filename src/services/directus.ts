@@ -3,13 +3,13 @@
 import { Directus } from '@directus/sdk';
 import type {
 	Association,
+	Board,
 	Conference,
 	DirectusType,
 	Home,
 	Imprint,
 	Navbar,
-	Sponsor,
-	Sponsors
+	YearlyTopic
 } from 'src/interfaces/directus';
 import { env } from '$env/dynamic/private';
 
@@ -98,4 +98,22 @@ export async function association() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Association;
+}
+
+export async function yearlyTopics() {
+	await initPromise;
+	return (
+		await directus.items('yearly_topic').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as YearlyTopic[];
+}
+
+export async function board() {
+	await initPromise;
+	return (
+		await directus.items('association_board').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as Board[];
 }

@@ -40,10 +40,23 @@ export type Home = {
 export type Association = {
 	translations: Translation[] &
 		{
-		title: string;
-		text: string;
+			title: string;
+			text: string;
+			text_left: string;
+			button_left: string;
+			text_right: string;
+			title2: string;
+			text2: string;
+			board_title: string;
+			title3: string;
+			text3: string;
+			junon_title: string;
+			junon_text: string;
+			junon_button: string;
 		}[];
 	leaf_image: Image;
+	junon_image: Image;
+	junon_link: string;
 };
 
 export type Conference = {
@@ -68,6 +81,17 @@ export type Conference = {
 		| 'DE-SH'
 		| 'DE-TH';
 	website: string;
+};
+
+export type YearlyTopic = {
+	id: string;
+	translations: Translation[] & { title: string; text: string }[];
+};
+
+export type Board = {
+	name: string;
+	image: Image;
+	translations: Translation[] & { role: string }[];
 };
 
 // --- System ---
