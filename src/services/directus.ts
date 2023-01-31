@@ -3,6 +3,7 @@
 import { Directus } from '@directus/sdk';
 import type {
 	Association,
+	BBVN,
 	Board,
 	Conference,
 	DirectusType,
@@ -126,4 +127,13 @@ export async function board() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Board[];
+}
+
+export async function bbvn() {
+	await initPromise;
+	return (
+		await directus.items('bbvn').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as BBVN;
 }

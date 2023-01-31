@@ -4,6 +4,7 @@
 	import ArrowRight from 'src/icons/white-arrow-right.svg';
 	import ChevronDown from 'src/icons/chevron-down.svg';
 	import ExternalIcon from 'src/icons/dark-external-link.svg';
+	import MapPinIcon from 'src/icons/dark-map-pin.svg';
 	import { slide } from 'svelte/transition';
 	import Img from '$lib/img.svelte';
 
@@ -28,8 +29,6 @@
 		let lang = $selectedLanguage;
 		board = data.board.map((b) => {
 			const r = b.translations.find((t) => t.languages_code.code === lang);
-			console.log(r.role);
-
 			return { name: b.name, role: r.role, image: b.image };
 		});
 	}
@@ -62,17 +61,22 @@
 		</p>
 		<div class="flex mt-5">
 			<a href="#engagement" class="border border-gray-500 px-3 py-2 rounded-2xl font-bold flex"
-				>{$translated.title2}</a
+				>{$translated.commitment_title}</a
 			>
 		</div>
 	</div>
 </div>
 
 <div id="engagement" class="mt-20">
-	<h1 class="mb-4">{$translated.title2}</h1>
+	<h1 class="mb-4">{$translated.commitment_title}</h1>
 	<p>
-		{@html $translated.text2}
+		{@html $translated.commitment_text}
 	</p>
+	<div class="flex mt-5">
+		<a href="/association/bbvn" class="border border-gray-500 px-3 py-2 rounded-2xl font-bold flex"
+			>{$translated.commitment_button} <img src={MapPinIcon} alt="map pin icon" class="ml-2"></a
+		>
+	</div>
 </div>
 
 <div class="mt-20">
@@ -114,9 +118,9 @@
 </div>
 
 <div class="mt-20">
-	<h1 class="mb-4">{$translated.title3}</h1>
+	<h1 class="mb-4">{$translated.member_title}</h1>
 	<p class="sm:columns-3" style="column-gap: 3rem;">
-		{@html $translated.text3}
+		{@html $translated.member_text}
 	</p>
 </div>
 

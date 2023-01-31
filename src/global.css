@@ -2,3 +2,6 @@ ul {
 	@apply list-disc list-inside
 }
 
+p>a {
+	@apply text-blue-dmun
+}

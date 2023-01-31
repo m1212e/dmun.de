@@ -45,11 +45,12 @@ export type Association = {
 			text_left: string;
 			button_left: string;
 			text_right: string;
-			title2: string;
-			text2: string;
+			commitment_title: string;
+			commitment_text: string;
+			commitment_button: string;
 			board_title: string;
-			title3: string;
-			text3: string;
+			member_title: string;
+			member_text: string;
 			junon_title: string;
 			junon_text: string;
 			junon_button: string;
@@ -64,27 +65,27 @@ export type Conference = {
 	name: string;
 	logo: Image;
 	state:
-		| 'DE-BW'
-		| 'DE-BE'
-		| 'DE-BY'
-		| 'DE-BB'
-		| 'DE-HB'
-		| 'DE-HH'
-		| 'DE-HE'
-		| 'DE-MV'
-		| 'DE-NI'
-		| 'DE-NW'
-		| 'DE-RP'
-		| 'DE-SL'
-		| 'DE-SN'
-		| 'DE-ST'
-		| 'DE-SH'
-		| 'DE-TH';
+		| "DE-BW"
+		| "DE-BE"
+		| "DE-BY"
+		| "DE-BB"
+		| "DE-HB"
+		| "DE-HH"
+		| "DE-HE"
+		| "DE-MV"
+		| "DE-NI"
+		| "DE-NW"
+		| "DE-RP"
+		| "DE-SL"
+		| "DE-SN"
+		| "DE-ST"
+		| "DE-SH"
+		| "DE-TH";
 	website: string;
 };
 
 export type ModelUN = {
-	translations: Translation[] & { text: string, testemonials: string }[];
+	translations: Translation[] & { text: string; testemonials: string }[];
 };
 
 export type YearlyTopic = {
@@ -96,6 +97,11 @@ export type Board = {
 	name: string;
 	image: Image;
 	translations: Translation[] & { role: string }[];
+};
+
+export type BBVN = {
+	translations: Translation[] &
+		{ introduction: string; book_now: string; contact: string }[];
 };
 
 // --- System ---
