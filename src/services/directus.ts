@@ -133,7 +133,7 @@ export async function bbvn() {
 	await initPromise;
 	return (
 		await directus.items('bbvn').readByQuery({
-			fields: '*.*.*'
+			fields: '*.*.*.*'
 		} as any)
 	).data as unknown as BBVN;
 }

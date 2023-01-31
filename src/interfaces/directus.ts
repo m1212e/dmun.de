@@ -102,6 +102,20 @@ export type Board = {
 export type BBVN = {
 	translations: Translation[] &
 		{ introduction: string; book_now: string; contact: string }[];
+	modules: {
+		bbvn_modules_id: {
+			image: Image;
+			translations: Translation[] &
+				{
+					title: string;
+					target_group: string;
+					scope: string;
+					methods: string;
+					goals: string;
+					details: string;
+				}[];
+		};
+	}[];
 };
 
 // --- System ---
