@@ -11,6 +11,7 @@ import type {
 	Imprint,
 	ModelUN,
 	Navbar,
+	Sponsoring,
 	YearlyTopic
 } from 'src/interfaces/directus';
 import { env } from '$env/dynamic/private';
@@ -136,4 +137,13 @@ export async function bbvn() {
 			fields: '*.*.*.*'
 		} as any)
 	).data as unknown as BBVN;
+}
+
+export async function sponsoring() {
+	await initPromise;
+	return (
+		await directus.items('sponsoring').readByQuery({
+			fields: '*.*.*'
+		} as any)
+	).data as unknown as Sponsoring;
 }

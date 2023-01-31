@@ -2,7 +2,13 @@
 export type Navbar = {
 	logo: Image;
 	translations: Translation[] &
-		{ home: string; association: string; conferences: string; news: string }[];
+		{
+			home: string;
+			association: string;
+			conferences: string;
+			news: string;
+			sponsoring: string;
+		}[];
 };
 
 export type Footer = {
@@ -97,6 +103,28 @@ export type Board = {
 	name: string;
 	image: Image;
 	translations: Translation[] & { role: string }[];
+};
+
+export type Sponsoring = {
+	translations: Translation[] &
+		{
+			title: string;
+			text: string;
+			sponsoring_title: string;
+			sponsoring_text: string;
+			sponsoring_button: string;
+			donation_title: string;
+			donation_text: string;
+			donation_button: string;
+			membership_title: string;
+			membership_text: string;
+			membership_download_form: string;
+			membership_send_form: string;
+		}[];
+	sponsoring_button_link: string;
+	donation_button_link: string;
+	membership_form: {id: string};
+	membership_form_send_link: string;
 };
 
 export type BBVN = {

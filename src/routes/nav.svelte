@@ -45,6 +45,9 @@
 		<a href="/news" on:click={close} class={$page.route.id?.startsWith('/news') ? 'underline' : ''}
 			>{$translated.news}</a
 		>
+		<a href="/sponsoring" on:click={close} class={$page.route.id?.startsWith('/sponsoring') ? 'underline' : ''}
+			>{$translated.sponsoring}</a
+		>
 		<a class="button" href="/conferences" on:click={close}
 			>{$translated.conferences}<img
 				class="ml-1"
