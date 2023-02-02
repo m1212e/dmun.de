@@ -12,7 +12,9 @@ import type {
 	ModelUN,
 	Navbar,
 	Sponsoring,
-	YearlyTopic
+	YearlyTopic,
+	News,
+	Sponsor
 } from 'src/interfaces/directus';
 import { env } from '$env/dynamic/private';
 
@@ -146,4 +148,23 @@ export async function sponsoring() {
 			fields: '*.*.*'
 		} as any)
 	).data as unknown as Sponsoring;
+}
+
+export async function news() {
+	await initPromise;
+	return (
+		await directus.items('news').readByQuery({
+			fields: '*.*.*',
+			sort: "-date_created"
+		} as any)
+	).data as unknown as News[];
+}
+
+export async function sponsors() {
+	await initPromise;
+	return (
+		await directus.items('sponsors').readByQuery({
+			fields: '*.*.*',
+		} as any)
+	).data as unknown as Sponsor[];
 }

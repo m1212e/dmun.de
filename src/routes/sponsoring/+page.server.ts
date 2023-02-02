@@ -1,4 +1,4 @@
-import { sponsoring } from '../../services/directus';
+import { sponsoring, sponsors } from '../../services/directus';
 
 export const prerender = true;
 
@@ -6,5 +6,6 @@ export const prerender = true;
 export async function load() {
 	return {
 		content: await sponsoring(),
+		sponsors: await sponsors()
 	};
 }

@@ -40,7 +40,6 @@ export type Home = {
 	section1_image: Image;
 	section2_image: Image;
 	section3_image: Image;
-	sponsors: { sponsors_id: { image: Image; website: string } }[];
 };
 
 export type Association = {
@@ -120,10 +119,11 @@ export type Sponsoring = {
 			membership_text: string;
 			membership_download_form: string;
 			membership_send_form: string;
+			current_sponsors: string;
 		}[];
 	sponsoring_button_link: string;
 	donation_button_link: string;
-	membership_form: {id: string};
+	membership_form: { id: string };
 	membership_form_send_link: string;
 };
 
@@ -144,6 +144,21 @@ export type BBVN = {
 				}[];
 		};
 	}[];
+};
+
+export type News = {
+	id: string;
+	image: Image;
+	/**
+	 * Timestamp of creation
+	 */
+	date_created: number;
+	translations: Translation[] & { title: string; text: string }[];
+};
+
+export type Sponsor = {
+	image: Image;
+	website: string;
 };
 
 // --- System ---

@@ -1,13 +1,16 @@
 <script lang="ts">
 	import Img from '$lib/img.svelte';
-	import type { Home, Sponsor } from 'src/interfaces/directus';
+	import type { Home, News, Sponsor } from 'src/interfaces/directus';
 	import { getTranslation } from 'src/services/language';
 	import ArrowRight from 'src/icons/white-arrow-right.svg';
+	import Newspaper from 'src/icons/dark-newspaper.svg';
 
 	export let data: any;
 	let content: Home = data.content;
-	let sponsors: Sponsor[] = data.sponsors;
 	const translated = getTranslation(content);
+	let sponsors = data.sponsors as Sponsor[];
+	let news = (data.news as News[])[0];
+	let news_translations = getTranslation(news.translations);
 </script>
 
 <div class="flex items-center justify-center">
@@ -34,9 +37,16 @@
 	/>
 </div>
 
-TODO: News einbauen
+<a href="/news/{news.id}" class="flex mt-20 hover:scale-105 duration-300">
+	<img src={Newspaper} alt="newspaper icon" />
+	<div class="ml-5 sm:ml-10 news">
+		<p>
+			{@html $news_translations.text}
+		</p>
+	</div>
+</a>
 
-<div class="pt-40 flex items-center flex-col sm:flex-row">
+<div class="mt-32 flex items-center flex-col sm:flex-row">
 	<Img
 		class="sm:mr-5 mb-10 sm:mb-0 w-full sm:w-80 sm:h-80 rounded-3xl"
 		image={content.section1_image}
@@ -86,13 +96,20 @@ TODO: News einbauen
 <div>
 	<h2 class="mt-14 mb-4">{$translated.sponsors}</h2>
 	<div class="grid gap-x-8 gap-y-3 sm:grid-cols-3 grid-cols-1 w-full">
-		{#each content.sponsors as sponsor}
+		{#each sponsors as sponsor}
 			<a
 				class="h-28 flex justify-center hover:shadow duration-300 rounded-lg"
-				href={sponsor.sponsors_id.website}
+				href={sponsor.website}
 			>
-				<Img image={sponsor.sponsors_id.image} alt="sponsor image" />
+				<Img image={sponsor.image} alt="sponsor image" />
 			</a>
 		{/each}
 	</div>
 </div>
+
+<style>
+	.news {
+		mask-image: linear-gradient(180deg, #000 60%, transparent);
+		@apply h-36 overflow-y-hidden;
+	}
+</style>

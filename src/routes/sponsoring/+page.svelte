@@ -1,9 +1,11 @@
 <script lang="ts">
-	import type { Sponsoring } from 'src/interfaces/directus';
+	import Img from '$lib/img.svelte';
+	import type { Sponsor, Sponsoring } from 'src/interfaces/directus';
 	import { getTranslation } from 'src/services/language';
 
 	export let data: any;
 	let content = data.content as Sponsoring;
+	let sponsors = data.sponsors as Sponsor[];
 	let translated = getTranslation(content);
 </script>
 
@@ -15,8 +17,8 @@
 	{@html $translated.text}
 </p>
 
-<div class="flex mt-20 divide-x-2 divide-dashed w-full">
-	<div class="w-1/3 flex-col justify-center mr-4">
+<div class="flex flex-col sm:flex-row mt-20 sm:divide-x-2 divide-dashed w-full">
+	<div class="sm:w-1/3 flex-col justify-center sm:mr-4 mb-5">
 		<h3>{$translated.sponsoring_title}</h3>
 		<p class="mt-2">
 			{@html $translated.sponsoring_text}
@@ -29,7 +31,7 @@
 			>
 		</div>
 	</div>
-	<div class="w-1/3 flex-col justify-center pl-4 mr-4">
+	<div class="sm:w-1/3 flex-col justify-center sm:pl-4 sm:mr-4 mb-5">
 		<h3>{$translated.donation_title}</h3>
 		<p class="mt-2">
 			{@html $translated.donation_text}
@@ -42,7 +44,7 @@
 			>
 		</div>
 	</div>
-	<div class="w-1/3 flex-col justify-center pl-4">
+	<div class="sm:w-1/3 flex-col justify-center sm:pl-4 mb-5">
 		<h3>{$translated.membership_title}</h3>
 		<p class="mt-2">
 			{@html $translated.membership_text}
@@ -59,5 +61,19 @@
 				>{$translated.membership_send_form}</a
 			>
 		</div>
+	</div>
+</div>
+
+<div>
+	<h2 class="mt-32 w-full text-center mb-4">{$translated.current_sponsors}</h2>
+	<div class="grid gap-x-8 gap-y-3 sm:grid-cols-3 grid-cols-1 w-full">
+		{#each sponsors as sponsor}
+			<a
+				class="h-28 flex justify-center hover:shadow duration-300 rounded-lg"
+				href={sponsor.website}
+			>
+				<Img image={sponsor.image} alt="sponsor image" />
+			</a>
+		{/each}
 	</div>
 </div>
