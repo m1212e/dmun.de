@@ -9,7 +9,6 @@
 	import User from 'src/icons/dark-user.svg';
 	import Clock from 'src/icons/dark-clock.svg';
 	import Pen from 'src/icons/dark-pen.svg';
-	import Book from 'src/icons/dark-book.svg';
 	import Img from '$lib/img.svelte';
 
 	export let data: any;
