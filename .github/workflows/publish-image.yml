@@ -4,10 +4,10 @@ on: [push]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: dmun.de-builder
+  IMAGE_NAME: dmun-de-builder
 
 jobs:
-  testcore:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
