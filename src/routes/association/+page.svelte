@@ -41,7 +41,7 @@
 			{@html $translated.text}
 		</p>
 	</div>
-	<img class="sm:w-5/12" src={'/assets/' + content.leaf_image.id} alt="decorative" />
+	<Img class="sm:w-5/12" image={content.leaf_image} alt="decorative" />
 </div>
 
 <div class="flex-row sm:flex sm:divide-x-2 divide-dashed pt-10">

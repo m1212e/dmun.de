@@ -30,7 +30,7 @@
 	<!-- mobile nav menu end  -->
 
 	<a href="/">
-		<img class="logo" src={'/assets/' + data.logo.id} alt="dmun logo" />
+		<img class="logo" src={'/assets/' + data.logo.filename_disk} alt="dmun logo" />
 	</a>
 	<div class="links" class:expanded>
 		<a href="/" on:click={close} class={$page.route.id == '/' ? 'underline' : ''}

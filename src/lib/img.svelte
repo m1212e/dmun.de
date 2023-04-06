@@ -6,7 +6,10 @@
 	export let image: string | Image;
 	export let alt: string;
 
-	$: id = typeof image == 'string' ? image : image.id;
+	// console.log(image);
+	
+
+	$: id = typeof image == 'string' ? image : image.filename_disk;
 </script>
 
 <img class={$$props.class} src={'/assets/' + id} {alt} />

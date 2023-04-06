@@ -1,0 +1,4 @@
+http://localhost {
+    try_files {path}.html {path} /index.html
+    file_server
+}
