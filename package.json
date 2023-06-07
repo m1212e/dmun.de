@@ -29,12 +29,12 @@
 		"tailwindcss": "^3.3.1",
 		"tslib": "^2.5.0",
 		"typescript": "^5.0.3",
-		"vite": "^4.2.1",
+		"vite": "^4.2.3",
 		"@directus/sdk": "^10.3.3",
 		"@sveltejs/adapter-static": "^2.0.1"
 	},
 	"dependencies": {
-		"vite": "^4.2.1"
+		"vite": "^4.2.3"
 	},
 	"type": "module"
 }
