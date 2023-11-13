@@ -30,7 +30,7 @@
 		"tslib": "^2.5.0",
 		"typescript": "^5.0.3",
 		"vite": "^4.2.3",
-		"@directus/sdk": "^10.3.3",
+		"@directus/sdk": "^13.0.1",
 		"@sveltejs/adapter-static": "^2.0.1"
 	},
 	"dependencies": {
